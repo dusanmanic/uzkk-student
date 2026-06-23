@@ -48,7 +48,7 @@ function VestPage() {
         className="mt-10 aspect-video w-full object-cover"
       />
       <div className="prose prose-lg mt-10 space-y-6 text-pretty text-foreground">
-        {item.body.map((p, i) => (
+        {item.body.map((p: string, i: number) => (
           <p key={i} className="text-lg leading-relaxed">
             {p}
           </p>

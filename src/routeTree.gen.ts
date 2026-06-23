@@ -9,38 +9,168 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TimRouteImport } from './routes/tim'
+import { Route as MladjeRouteImport } from './routes/mladje'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as KlubRouteImport } from './routes/klub'
+import { Route as GalerijaRouteImport } from './routes/galerija'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VestiIndexRouteImport } from './routes/vesti.index'
+import { Route as VestiSlugRouteImport } from './routes/vesti.$slug'
 
+const TimRoute = TimRouteImport.update({
+  id: '/tim',
+  path: '/tim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MladjeRoute = MladjeRouteImport.update({
+  id: '/mladje',
+  path: '/mladje',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KlubRoute = KlubRouteImport.update({
+  id: '/klub',
+  path: '/klub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalerijaRoute = GalerijaRouteImport.update({
+  id: '/galerija',
+  path: '/galerija',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VestiIndexRoute = VestiIndexRouteImport.update({
+  id: '/vesti/',
+  path: '/vesti/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VestiSlugRoute = VestiSlugRouteImport.update({
+  id: '/vesti/$slug',
+  path: '/vesti/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/galerija': typeof GalerijaRoute
+  '/klub': typeof KlubRoute
+  '/kontakt': typeof KontaktRoute
+  '/mladje': typeof MladjeRoute
+  '/tim': typeof TimRoute
+  '/vesti/$slug': typeof VestiSlugRoute
+  '/vesti/': typeof VestiIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/galerija': typeof GalerijaRoute
+  '/klub': typeof KlubRoute
+  '/kontakt': typeof KontaktRoute
+  '/mladje': typeof MladjeRoute
+  '/tim': typeof TimRoute
+  '/vesti/$slug': typeof VestiSlugRoute
+  '/vesti': typeof VestiIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/galerija': typeof GalerijaRoute
+  '/klub': typeof KlubRoute
+  '/kontakt': typeof KontaktRoute
+  '/mladje': typeof MladjeRoute
+  '/tim': typeof TimRoute
+  '/vesti/$slug': typeof VestiSlugRoute
+  '/vesti/': typeof VestiIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/galerija'
+    | '/klub'
+    | '/kontakt'
+    | '/mladje'
+    | '/tim'
+    | '/vesti/$slug'
+    | '/vesti/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/galerija'
+    | '/klub'
+    | '/kontakt'
+    | '/mladje'
+    | '/tim'
+    | '/vesti/$slug'
+    | '/vesti'
+  id:
+    | '__root__'
+    | '/'
+    | '/galerija'
+    | '/klub'
+    | '/kontakt'
+    | '/mladje'
+    | '/tim'
+    | '/vesti/$slug'
+    | '/vesti/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GalerijaRoute: typeof GalerijaRoute
+  KlubRoute: typeof KlubRoute
+  KontaktRoute: typeof KontaktRoute
+  MladjeRoute: typeof MladjeRoute
+  TimRoute: typeof TimRoute
+  VestiSlugRoute: typeof VestiSlugRoute
+  VestiIndexRoute: typeof VestiIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tim': {
+      id: '/tim'
+      path: '/tim'
+      fullPath: '/tim'
+      preLoaderRoute: typeof TimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mladje': {
+      id: '/mladje'
+      path: '/mladje'
+      fullPath: '/mladje'
+      preLoaderRoute: typeof MladjeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/klub': {
+      id: '/klub'
+      path: '/klub'
+      fullPath: '/klub'
+      preLoaderRoute: typeof KlubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galerija': {
+      id: '/galerija'
+      path: '/galerija'
+      fullPath: '/galerija'
+      preLoaderRoute: typeof GalerijaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vesti/': {
+      id: '/vesti/'
+      path: '/vesti'
+      fullPath: '/vesti/'
+      preLoaderRoute: typeof VestiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vesti/$slug': {
+      id: '/vesti/$slug'
+      path: '/vesti/$slug'
+      fullPath: '/vesti/$slug'
+      preLoaderRoute: typeof VestiSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GalerijaRoute: GalerijaRoute,
+  KlubRoute: KlubRoute,
+  KontaktRoute: KontaktRoute,
+  MladjeRoute: MladjeRoute,
+  TimRoute: TimRoute,
+  VestiSlugRoute: VestiSlugRoute,
+  VestiIndexRoute: VestiIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
