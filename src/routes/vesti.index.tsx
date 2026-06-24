@@ -16,14 +16,14 @@ function VestiPage() {
   return (
     <>
       <PageHeader eyebrow="Активности" title="ВЕСТИ" lead="Све што се дешава у клубу — резултати, упис, дешавања." />
-      <section className="mx-auto max-w-7xl px-6 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="grid gap-px bg-border md:grid-cols-3">
           {news.map((n) => (
             <Link
               key={n.slug}
               to="/vesti/$slug"
               params={{ slug: n.slug }}
-              className="group bg-background p-8"
+              className="group bg-background p-5 sm:p-8"
             >
               <img
                 src={n.img}
@@ -31,10 +31,10 @@ function VestiPage() {
                 width={1024}
                 height={640}
                 loading="lazy"
-                className="mb-6 aspect-video w-full object-cover"
+                className="mb-5 aspect-video w-full object-cover sm:mb-6"
               />
               <span className="font-mono text-[10px] text-muted-foreground">{n.date}</span>
-              <h3 className="mt-2 text-2xl font-bold italic tracking-tight transition-colors group-hover:text-primary">
+              <h3 className="mt-2 text-xl font-bold italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
                 {n.title}
               </h3>
               <p className="mt-3 text-sm text-muted-foreground">{n.excerpt}</p>

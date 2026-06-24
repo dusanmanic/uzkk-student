@@ -27,8 +27,8 @@ function KlubPage() {
         title="СЕДАМДЕСЕТ ГОДИНА НИШКЕ КОШАРКЕ."
         lead="Од 1953. године градимо традицију женске кошарке у Нишу — кроз клуб су прошле генерације врхунских играчица."
       />
-      <section className="mx-auto max-w-4xl px-6 py-16 lg:py-24">
-        <div className="space-y-6 text-lg text-pretty text-muted-foreground">
+      <section className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+        <div className="space-y-5 text-base text-pretty text-muted-foreground sm:space-y-6 sm:text-lg">
           <p>
             Удружење женског кошаркашког клуба Студент Ниш основано је 1953. године. Кроз
             деценије постојања, клуб је постао препознатљив по систематском раду са младим
@@ -40,11 +40,11 @@ function KlubPage() {
           </p>
         </div>
 
-        <h2 className="mt-20 mb-8 text-3xl font-extrabold tracking-tighter">Кључни моменти</h2>
+        <h2 className="mt-14 mb-6 text-2xl font-extrabold tracking-tighter sm:mt-20 sm:mb-8 sm:text-3xl">Кључни моменти</h2>
         <ol className="space-y-px bg-border">
           {milestones.map((m) => (
-            <li key={m.year} className="grid gap-4 bg-background p-6 md:grid-cols-[140px_1fr] md:items-baseline">
-              <span className="font-mono text-2xl font-extrabold text-primary">{m.year}</span>
+            <li key={m.year} className="grid gap-2 bg-background p-5 sm:gap-4 sm:p-6 md:grid-cols-[140px_1fr] md:items-baseline">
+              <span className="font-mono text-xl font-extrabold text-primary sm:text-2xl">{m.year}</span>
               <p className="text-pretty">{m.text}</p>
             </li>
           ))}

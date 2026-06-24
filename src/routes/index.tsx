@@ -29,36 +29,36 @@ function Index() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:py-28">
           <div className="animate-reveal">
-            <div className="mb-8 flex items-center gap-4">
-              <img src={crest} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-16 w-16 lg:h-20 lg:w-20" />
-              <div>
+            <div className="mb-6 flex items-center gap-3 sm:mb-8 sm:gap-4">
+              <img src={crest} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20" />
+              <div className="min-w-0">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                   Од 1953.
                 </span>
-                <h2 className="text-base font-extrabold tracking-tighter text-primary">
+                <h2 className="truncate text-sm font-extrabold tracking-tighter text-primary sm:text-base">
                   УЖКК СТУДЕНТ НИШ
                 </h2>
               </div>
             </div>
-            <h1 className="mb-8 text-6xl font-extrabold leading-[0.85] tracking-tighter lg:text-8xl">
+            <h1 className="mb-6 text-[2.75rem] font-extrabold leading-[0.85] tracking-tighter sm:mb-8 sm:text-6xl lg:text-8xl">
               ВИШЕ ОД <span className="text-primary">ИГРЕ.</span>
             </h1>
-            <p className="mb-8 max-w-[42ch] text-lg text-pretty text-muted-foreground">
+            <p className="mb-6 max-w-[42ch] text-base text-pretty text-muted-foreground sm:mb-8 sm:text-lg">
               Традиција, снага и заједништво. Женски кошаркашки клуб Студент Ниш — место где се
               стварају шампиони већ деценијама.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/vesti"
-                className="inline-block bg-primary px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary-foreground transition-all hover:bg-foreground"
+                className="inline-block bg-primary px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-primary-foreground transition-all hover:bg-foreground sm:px-7 sm:py-4 sm:text-xs"
               >
                 Најновије вести
               </Link>
               <Link
                 to="/mladje"
-                className="inline-block border border-foreground px-7 py-4 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+                className="inline-block border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-7 sm:py-4 sm:text-xs"
               >
                 Школа кошарке
               </Link>
@@ -82,21 +82,21 @@ function Index() {
 
       {/* Competitions */}
       <section className="border-b border-border bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <span className="mb-6 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <span className="mb-5 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground sm:mb-6">
             Такмичимо се у
           </span>
-          <div className="flex flex-wrap items-center gap-12">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-12">
             <a
               href="https://www.kss.rs/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-extrabold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-extrabold sm:h-14 sm:w-14">
                 КСС
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold">Кошаркашки савез Србије</p>
                 <p className="text-xs text-muted-foreground group-hover:text-primary">kss.rs ↗</p>
               </div>
@@ -107,10 +107,10 @@ function Index() {
               rel="noopener noreferrer"
               className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground font-extrabold text-xs">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground font-extrabold text-xs sm:h-14 sm:w-14">
                 FIBA
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold">FIBA EuroCup Women</p>
                 <p className="text-xs text-muted-foreground group-hover:text-primary">fiba.basketball ↗</p>
               </div>
@@ -120,13 +120,13 @@ function Index() {
       </section>
 
       {/* News */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-12 flex items-end justify-between">
-          <div>
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
+        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-12">
+          <div className="min-w-0">
             <span className="mb-2 block font-mono text-xs uppercase text-primary">Активности</span>
-            <h2 className="text-4xl font-extrabold tracking-tighter">НАЈНОВИЈЕ ВЕСТИ</h2>
+            <h2 className="text-2xl font-extrabold tracking-tighter sm:text-4xl">НАЈНОВИЈЕ ВЕСТИ</h2>
           </div>
-          <Link to="/vesti" className="border-b-2 border-accent pb-1 text-sm font-bold uppercase">
+          <Link to="/vesti" className="shrink-0 border-b-2 border-accent pb-1 text-xs font-bold uppercase sm:text-sm">
             Све вести
           </Link>
         </div>
@@ -136,7 +136,7 @@ function Index() {
               key={n.slug}
               to="/vesti/$slug"
               params={{ slug: n.slug }}
-              className="group bg-background p-8"
+              className="group bg-background p-5 sm:p-8"
             >
               <img
                 src={n.img}
@@ -144,10 +144,10 @@ function Index() {
                 width={1024}
                 height={640}
                 loading="lazy"
-                className="mb-6 aspect-video w-full object-cover"
+                className="mb-5 aspect-video w-full object-cover sm:mb-6"
               />
               <span className="font-mono text-[10px] text-muted-foreground">{n.date}</span>
-              <h3 className="mt-2 text-2xl font-bold italic tracking-tight transition-colors group-hover:text-primary">
+              <h3 className="mt-2 text-xl font-bold italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
                 {n.title}
               </h3>
             </Link>
@@ -157,22 +157,22 @@ function Index() {
 
       {/* History strip */}
       <section className="border-y border-border bg-foreground text-background">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:gap-12 sm:px-6 sm:py-24 lg:grid-cols-3">
           <div>
             <span className="font-mono text-xs uppercase text-accent">Историјат</span>
-            <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl">
               Седамдесет година нишке кошарке.
             </h2>
           </div>
-          <div className="space-y-6 text-neutral-300 lg:col-span-2">
-            <p className="text-lg text-pretty">
+          <div className="space-y-5 text-neutral-300 sm:space-y-6 lg:col-span-2">
+            <p className="text-base text-pretty sm:text-lg">
               УЖКК Студент Ниш је један од најстаријих женских кошаркашких клубова у Србији.
               Основан 1953. године, кроз нашу школу прошле су генерације врхунских играчица.
               Данас радимо са више од сто девојчица у свим узрасним категоријама.
             </p>
             <Link
               to="/klub"
-              className="inline-block border border-neutral-700 px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-background hover:text-foreground"
+              className="inline-block border border-neutral-700 px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-background hover:text-foreground sm:px-6 sm:text-xs"
             >
               Цео историјат →
             </Link>
@@ -182,10 +182,10 @@ function Index() {
 
       {/* School CTA */}
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-20 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 py-12 sm:gap-8 sm:px-6 sm:py-20 md:grid-cols-2">
           <div>
             <span className="font-mono text-xs uppercase text-primary">Упис је отворен</span>
-            <h2 className="mt-2 text-4xl font-extrabold tracking-tighter lg:text-5xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl lg:text-5xl">
               Школа кошарке за девојчице 7–14 година.
             </h2>
           </div>
@@ -196,7 +196,7 @@ function Index() {
             </p>
             <Link
               to="/mladje"
-              className="inline-block bg-accent px-7 py-4 text-xs font-bold uppercase tracking-widest text-accent-foreground transition-all hover:bg-foreground hover:text-background"
+              className="inline-block bg-accent px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-accent-foreground transition-all hover:bg-foreground hover:text-background sm:px-7 sm:py-4 sm:text-xs"
             >
               Информације о упису →
             </Link>
@@ -206,14 +206,14 @@ function Index() {
 
       {/* Social */}
       <section className="border-b border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 py-12 md:flex-row md:items-center">
-          <span className="text-2xl font-extrabold tracking-tighter">Пратите нас уживо</span>
-          <div className="flex gap-4">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 px-4 py-10 sm:gap-6 sm:px-6 sm:py-12 md:flex-row md:items-center">
+          <span className="text-xl font-extrabold tracking-tighter sm:text-2xl">Пратите нас уживо</span>
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+              className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
             >
               Инстаграм ↗
             </a>
@@ -221,7 +221,7 @@ function Index() {
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+              className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
             >
               YouTube ↗
             </a>

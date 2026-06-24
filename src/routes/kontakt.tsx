@@ -17,17 +17,17 @@ function KontaktPage() {
     <>
       <PageHeader eyebrow="Контакт" title="ПИШИТЕ НАМ, ДОЂИТЕ НА ТРЕНИНГ." />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div className="space-y-8">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-2">
+          <div className="space-y-6 sm:space-y-8">
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Адреса</span>
-              <p className="mt-2 text-xl font-bold">Спортски центар Чаир</p>
+              <p className="mt-2 text-lg font-bold sm:text-xl">Спортски центар Чаир</p>
               <p className="text-muted-foreground">Обреновићева бб, ТПЦ Калча, 18000 Ниш, Србија</p>
             </div>
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Телефон</span>
-              <p className="mt-2 text-xl font-bold">
+              <p className="mt-2 text-lg font-bold sm:text-xl">
                 <a href="tel:+381642444487" className="hover:text-primary">
                   +381 64 / 2-4444-87
                 </a>
@@ -35,13 +35,13 @@ function KontaktPage() {
             </div>
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">E-mail</span>
-              <p className="mt-2 text-xl font-bold">
+              <p className="mt-2 break-words text-lg font-bold sm:text-xl">
                 <a href="mailto:info@uzkkstudent.rs" className="hover:text-primary">
                   info@uzkkstudent.rs
                 </a>
               </p>
             </div>
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-wrap gap-3 pt-2 sm:pt-4">
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
@@ -61,18 +61,18 @@ function KontaktPage() {
             </div>
           </div>
 
-          <div className="bg-muted/40 p-8">
+          <div className="bg-muted/40 p-5 sm:p-8">
             <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Лого кит</span>
-            <h3 className="mt-2 text-2xl font-extrabold tracking-tighter">Грб и визуелни идентитет</h3>
+            <h3 className="mt-2 text-xl font-extrabold tracking-tighter sm:text-2xl">Грб и визуелни идентитет</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               За медије и партнере. Кит садржи грб клуба у више формата.
             </p>
-            <div className="mt-6 flex items-center gap-6">
-              <img src={crest} alt="Грб УЖКК Студент Ниш" width={120} height={120} className="h-28 w-28" />
+            <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
+              <img src={crest} alt="Грб УЖКК Студент Ниш" width={120} height={120} className="h-20 w-20 sm:h-28 sm:w-28" />
               <a
                 href={crest}
                 download="uzkk-student-grb.png"
-                className="inline-block bg-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest text-background transition-all hover:bg-primary"
+                className="inline-block bg-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-background transition-all hover:bg-primary sm:px-6 sm:text-xs"
               >
                 Преузми грб (PNG) ↓
               </a>
@@ -80,12 +80,12 @@ function KontaktPage() {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <iframe
             title="Локација СЦ Чаир, Ниш"
             src="https://www.google.com/maps?q=Sportski+centar+Cair+Nis&output=embed"
             loading="lazy"
-            className="aspect-[16/7] w-full border-0 grayscale"
+            className="aspect-[4/3] w-full border-0 grayscale sm:aspect-[16/7]"
           />
         </div>
       </section>

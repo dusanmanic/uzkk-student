@@ -18,8 +18,8 @@ function TimPage() {
     <>
       <PageHeader eyebrow="Сезона 2025/26" title="ПРВИ ТИМ И СТРУЧНИ ШТАБ" lead="Упознајте играчице које бране боје Студента и стручни штаб иза њих." />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <h2 className="mb-10 text-3xl font-extrabold tracking-tighter">Играчице</h2>
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+        <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Играчице</h2>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
           {players.map((p) => (
             <div key={p.num} className="group bg-background p-6">
@@ -56,19 +56,19 @@ function TimPage() {
       </section>
 
       <section className="border-t border-border bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <h2 className="mb-10 text-3xl font-extrabold tracking-tighter">Стручни штаб</h2>
-          <div className="grid gap-8 md:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+          <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Стручни штаб</h2>
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {staff.map((s) => (
-              <div key={s.name} className="bg-background p-6">
-                <div className="flex gap-6">
+              <div key={s.name} className="bg-background p-5 sm:p-6">
+                <div className="flex gap-4 sm:gap-6">
                   <img
                     src={s.img}
                     alt={s.name}
                     width={256}
                     height={320}
                     loading="lazy"
-                    className="aspect-[3/4] w-32 flex-none object-cover"
+                    className="aspect-[3/4] w-24 flex-none object-cover sm:w-32"
                   />
                   <div>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-primary">{s.role}</span>

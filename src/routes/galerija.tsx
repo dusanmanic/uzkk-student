@@ -34,12 +34,12 @@ function GalerijaPage() {
     <>
       <PageHeader eyebrow="Галерија" title="ФОТОГРАФИЈЕ И ВИДЕО." lead="Албуми са утакмица и тренинга, плус видео снимци са нашег YouTube канала." />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         {albums.map((album) => (
-          <div key={album.title} className="mb-16">
-            <div className="mb-6 flex items-baseline justify-between">
-              <h2 className="text-2xl font-extrabold tracking-tighter">{album.title}</h2>
-              <span className="font-mono text-xs text-muted-foreground">{album.date}</span>
+          <div key={album.title} className="mb-12 sm:mb-16">
+            <div className="mb-5 flex items-baseline justify-between gap-3 sm:mb-6">
+              <h2 className="text-xl font-extrabold tracking-tighter sm:text-2xl">{album.title}</h2>
+              <span className="shrink-0 font-mono text-xs text-muted-foreground">{album.date}</span>
             </div>
             <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-4">
               {album.photos.map((src, i) => (
@@ -60,9 +60,9 @@ function GalerijaPage() {
       </section>
 
       <section className="border-t border-border bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-16">
-          <h2 className="mb-8 text-2xl font-extrabold tracking-tighter">Видео — YouTube</h2>
-          <div className="grid gap-8 md:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+          <h2 className="mb-6 text-xl font-extrabold tracking-tighter sm:mb-8 sm:text-2xl">Видео — YouTube</h2>
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {videos.map((v) => (
               <div key={v.id}>
                 <div className="aspect-video w-full overflow-hidden bg-foreground">
