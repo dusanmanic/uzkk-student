@@ -22,7 +22,7 @@ function KontaktPage() {
           <div className="space-y-6 sm:space-y-8">
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Адреса</span>
-              <p className="mt-2 text-xl font-bold">Спортски центар Чаир</p>
+              <p className="mt-2 text-lg font-bold sm:text-xl">Спортски центар Чаир</p>
               <p className="text-muted-foreground">Обреновићева бб, ТПЦ Калча, 18000 Ниш, Србија</p>
             </div>
             <div>
