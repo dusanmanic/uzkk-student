@@ -32,12 +32,12 @@ export const Route = createFileRoute("/vesti/$slug")({
 function VestPage() {
   const item = Route.useLoaderData();
   return (
-    <article className="mx-auto max-w-3xl px-6 py-16 lg:py-24">
+    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
       <Link to="/vesti" className="font-mono text-xs uppercase tracking-widest text-primary hover:underline">
         ← Све вести
       </Link>
-      <span className="mt-8 block font-mono text-xs text-muted-foreground">{item.date}</span>
-      <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tighter lg:text-6xl">
+      <span className="mt-6 block font-mono text-xs text-muted-foreground sm:mt-8">{item.date}</span>
+      <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tighter sm:text-4xl lg:text-6xl">
         {item.title}
       </h1>
       <img
@@ -45,11 +45,11 @@ function VestPage() {
         alt={item.title}
         width={1024}
         height={640}
-        className="mt-10 aspect-video w-full object-cover"
+        className="mt-8 aspect-video w-full object-cover sm:mt-10"
       />
-      <div className="prose prose-lg mt-10 space-y-6 text-pretty text-foreground">
+      <div className="prose prose-lg mt-8 space-y-5 text-pretty text-foreground sm:mt-10 sm:space-y-6">
         {item.body.map((p: string, i: number) => (
-          <p key={i} className="text-lg leading-relaxed">
+          <p key={i} className="text-base leading-relaxed sm:text-lg">
             {p}
           </p>
         ))}
