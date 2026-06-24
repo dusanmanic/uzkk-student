@@ -60,7 +60,7 @@ export function Header() {
 
       {open ? (
         <div className="border-t border-border bg-background lg:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col px-6 py-4">
+          <div className="mx-auto flex max-w-7xl flex-col px-4 py-3 sm:px-6 sm:py-4">
             {links.map((l) => (
               <Link
                 key={l.to}
