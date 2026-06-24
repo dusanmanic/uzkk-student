@@ -157,22 +157,22 @@ function Index() {
 
       {/* History strip */}
       <section className="border-y border-border bg-foreground text-background">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:gap-12 sm:px-6 sm:py-24 lg:grid-cols-3">
           <div>
             <span className="font-mono text-xs uppercase text-accent">Историјат</span>
-            <h2 className="mt-2 text-4xl font-extrabold tracking-tighter">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl">
               Седамдесет година нишке кошарке.
             </h2>
           </div>
-          <div className="space-y-6 text-neutral-300 lg:col-span-2">
-            <p className="text-lg text-pretty">
+          <div className="space-y-5 text-neutral-300 sm:space-y-6 lg:col-span-2">
+            <p className="text-base text-pretty sm:text-lg">
               УЖКК Студент Ниш је један од најстаријих женских кошаркашких клубова у Србији.
               Основан 1953. године, кроз нашу школу прошле су генерације врхунских играчица.
               Данас радимо са више од сто девојчица у свим узрасним категоријама.
             </p>
             <Link
               to="/klub"
-              className="inline-block border border-neutral-700 px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-background hover:text-foreground"
+              className="inline-block border border-neutral-700 px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-background hover:text-foreground sm:px-6 sm:text-xs"
             >
               Цео историјат →
             </Link>
@@ -182,10 +182,10 @@ function Index() {
 
       {/* School CTA */}
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-6 py-20 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 py-12 sm:gap-8 sm:px-6 sm:py-20 md:grid-cols-2">
           <div>
             <span className="font-mono text-xs uppercase text-primary">Упис је отворен</span>
-            <h2 className="mt-2 text-4xl font-extrabold tracking-tighter lg:text-5xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl lg:text-5xl">
               Школа кошарке за девојчице 7–14 година.
             </h2>
           </div>
@@ -196,7 +196,7 @@ function Index() {
             </p>
             <Link
               to="/mladje"
-              className="inline-block bg-accent px-7 py-4 text-xs font-bold uppercase tracking-widest text-accent-foreground transition-all hover:bg-foreground hover:text-background"
+              className="inline-block bg-accent px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-accent-foreground transition-all hover:bg-foreground hover:text-background sm:px-7 sm:py-4 sm:text-xs"
             >
               Информације о упису →
             </Link>
@@ -206,14 +206,14 @@ function Index() {
 
       {/* Social */}
       <section className="border-b border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-6 py-12 md:flex-row md:items-center">
-          <span className="text-2xl font-extrabold tracking-tighter">Пратите нас уживо</span>
-          <div className="flex gap-4">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 px-4 py-10 sm:gap-6 sm:px-6 sm:py-12 md:flex-row md:items-center">
+          <span className="text-xl font-extrabold tracking-tighter sm:text-2xl">Пратите нас уживо</span>
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <a
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+              className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
             >
               Инстаграм ↗
             </a>
@@ -221,7 +221,7 @@ function Index() {
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+              className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
             >
               YouTube ↗
             </a>
