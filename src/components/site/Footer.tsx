@@ -52,7 +52,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-12 flex flex-col justify-between gap-2 border-t border-border pt-8 md:flex-row">
+        <div className="mt-10 flex flex-col justify-between gap-2 border-t border-border pt-6 sm:mt-12 sm:pt-8 md:flex-row">
           <span className="font-mono text-[10px] text-muted-foreground">
             © {new Date().getFullYear()} УЖКК СТУДЕНТ НИШ
           </span>
