@@ -35,7 +35,7 @@ function KontaktPage() {
             </div>
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">E-mail</span>
-              <p className="mt-2 text-xl font-bold">
+              <p className="mt-2 break-words text-lg font-bold sm:text-xl">
                 <a href="mailto:info@uzkkstudent.rs" className="hover:text-primary">
                   info@uzkkstudent.rs
                 </a>
