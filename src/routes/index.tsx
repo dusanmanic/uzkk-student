@@ -29,36 +29,36 @@ function Index() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:py-28">
           <div className="animate-reveal">
-            <div className="mb-8 flex items-center gap-4">
-              <img src={crest} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-16 w-16 lg:h-20 lg:w-20" />
-              <div>
+            <div className="mb-6 flex items-center gap-3 sm:mb-8 sm:gap-4">
+              <img src={crest} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20" />
+              <div className="min-w-0">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                   Од 1953.
                 </span>
-                <h2 className="text-base font-extrabold tracking-tighter text-primary">
+                <h2 className="truncate text-sm font-extrabold tracking-tighter text-primary sm:text-base">
                   УЖКК СТУДЕНТ НИШ
                 </h2>
               </div>
             </div>
-            <h1 className="mb-8 text-6xl font-extrabold leading-[0.85] tracking-tighter lg:text-8xl">
+            <h1 className="mb-6 text-[2.75rem] font-extrabold leading-[0.85] tracking-tighter sm:mb-8 sm:text-6xl lg:text-8xl">
               ВИШЕ ОД <span className="text-primary">ИГРЕ.</span>
             </h1>
-            <p className="mb-8 max-w-[42ch] text-lg text-pretty text-muted-foreground">
+            <p className="mb-6 max-w-[42ch] text-base text-pretty text-muted-foreground sm:mb-8 sm:text-lg">
               Традиција, снага и заједништво. Женски кошаркашки клуб Студент Ниш — место где се
               стварају шампиони већ деценијама.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/vesti"
-                className="inline-block bg-primary px-7 py-4 text-xs font-bold uppercase tracking-widest text-primary-foreground transition-all hover:bg-foreground"
+                className="inline-block bg-primary px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-primary-foreground transition-all hover:bg-foreground sm:px-7 sm:py-4 sm:text-xs"
               >
                 Најновије вести
               </Link>
               <Link
                 to="/mladje"
-                className="inline-block border border-foreground px-7 py-4 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
+                className="inline-block border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-7 sm:py-4 sm:text-xs"
               >
                 Школа кошарке
               </Link>
