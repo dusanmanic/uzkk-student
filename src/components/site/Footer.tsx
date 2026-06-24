@@ -2,10 +2,10 @@ const sponsors = ["ГРАД НИШ", "НИШ-ЕКСПРЕС", "КСС", "СЦ Ч
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background pb-12 pt-20">
-      <div className="mx-auto max-w-7xl px-6">
+    <footer className="border-t border-border bg-background pb-10 pt-14 sm:pb-12 sm:pt-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Sponsors */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <span className="mb-6 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
             Партнери и спонзори
           </span>
