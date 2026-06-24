@@ -31,7 +31,7 @@ export function Footer() {
             <p className="text-sm">+381 64 / 2-4444-87</p>
           </div>
           <div>
-            <h5 className="mb-6 text-xs font-bold uppercase tracking-widest">Пратите нас</h5>
+            <h5 className="mb-4 text-xs font-bold uppercase tracking-widest sm:mb-6">Пратите нас</h5>
             <div className="flex flex-col gap-2 text-sm">
               <a
                 href="https://www.instagram.com/"
