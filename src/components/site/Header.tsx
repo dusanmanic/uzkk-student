@@ -18,10 +18,10 @@ export function Header() {
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
-      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 lg:flex lg:justify-between">
-        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={crest} alt="Грб УЖКК Студент" width={40} height={40} className="h-10 w-10 shrink-0" />
-          <span className="truncate text-base font-extrabold tracking-tighter text-primary md:text-lg">
+      <div className="mx-auto grid h-14 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:h-16 sm:gap-4 sm:px-6 lg:flex lg:justify-between">
+        <Link to="/" className="flex min-w-0 items-center gap-2 sm:gap-3" onClick={() => setOpen(false)}>
+          <img src={crest} alt="Грб УЖКК Студент" width={40} height={40} className="h-8 w-8 shrink-0 sm:h-10 sm:w-10" />
+          <span className="truncate text-sm font-extrabold tracking-tighter text-primary sm:text-base md:text-lg">
             УЖКК СТУДЕНТ
           </span>
         </Link>
