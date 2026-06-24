@@ -52,7 +52,7 @@ export function Header() {
           aria-label={open ? "Затвори мени" : "Отвори мени"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border lg:hidden"
+          className="inline-flex h-9 w-9 shrink-0 items-center justify-center border border-border sm:h-10 sm:w-10 lg:hidden"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
