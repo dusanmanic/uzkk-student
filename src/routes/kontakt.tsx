@@ -41,7 +41,7 @@ function KontaktPage() {
                 </a>
               </p>
             </div>
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-wrap gap-3 pt-2 sm:pt-4">
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
