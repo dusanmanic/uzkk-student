@@ -82,21 +82,21 @@ function Index() {
 
       {/* Competitions */}
       <section className="border-b border-border bg-muted/30">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <span className="mb-6 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+          <span className="mb-5 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground sm:mb-6">
             Такмичимо се у
           </span>
-          <div className="flex flex-wrap items-center gap-12">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-12">
             <a
               href="https://www.kss.rs/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-extrabold">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-extrabold sm:h-14 sm:w-14">
                 КСС
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold">Кошаркашки савез Србије</p>
                 <p className="text-xs text-muted-foreground group-hover:text-primary">kss.rs ↗</p>
               </div>
@@ -107,10 +107,10 @@ function Index() {
               rel="noopener noreferrer"
               className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground font-extrabold text-xs">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground font-extrabold text-xs sm:h-14 sm:w-14">
                 FIBA
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-sm font-bold">FIBA EuroCup Women</p>
                 <p className="text-xs text-muted-foreground group-hover:text-primary">fiba.basketball ↗</p>
               </div>
@@ -120,13 +120,13 @@ function Index() {
       </section>
 
       {/* News */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="mb-12 flex items-end justify-between">
-          <div>
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
+        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-12">
+          <div className="min-w-0">
             <span className="mb-2 block font-mono text-xs uppercase text-primary">Активности</span>
-            <h2 className="text-4xl font-extrabold tracking-tighter">НАЈНОВИЈЕ ВЕСТИ</h2>
+            <h2 className="text-2xl font-extrabold tracking-tighter sm:text-4xl">НАЈНОВИЈЕ ВЕСТИ</h2>
           </div>
-          <Link to="/vesti" className="border-b-2 border-accent pb-1 text-sm font-bold uppercase">
+          <Link to="/vesti" className="shrink-0 border-b-2 border-accent pb-1 text-xs font-bold uppercase sm:text-sm">
             Све вести
           </Link>
         </div>
@@ -136,7 +136,7 @@ function Index() {
               key={n.slug}
               to="/vesti/$slug"
               params={{ slug: n.slug }}
-              className="group bg-background p-8"
+              className="group bg-background p-5 sm:p-8"
             >
               <img
                 src={n.img}
@@ -144,10 +144,10 @@ function Index() {
                 width={1024}
                 height={640}
                 loading="lazy"
-                className="mb-6 aspect-video w-full object-cover"
+                className="mb-5 aspect-video w-full object-cover sm:mb-6"
               />
               <span className="font-mono text-[10px] text-muted-foreground">{n.date}</span>
-              <h3 className="mt-2 text-2xl font-bold italic tracking-tight transition-colors group-hover:text-primary">
+              <h3 className="mt-2 text-xl font-bold italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
                 {n.title}
               </h3>
             </Link>
