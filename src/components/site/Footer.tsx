@@ -18,15 +18,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-12 border-t border-border pt-12 md:grid-cols-4">
+        <div className="grid gap-10 border-t border-border pt-10 sm:gap-12 sm:pt-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <span className="text-3xl font-black tracking-tighter text-primary">УЖКК СТУДЕНТ</span>
-            <p className="mt-6 max-w-[34ch] text-muted-foreground">
+            <span className="text-2xl font-black tracking-tighter text-primary sm:text-3xl">УЖКК СТУДЕНТ</span>
+            <p className="mt-5 max-w-[34ch] text-muted-foreground sm:mt-6">
               Ниш, Србија. Спортски центар Чаир. Постаните део наше породице.
             </p>
           </div>
           <div>
-            <h5 className="mb-6 text-xs font-bold uppercase tracking-widest">Контакт</h5>
+            <h5 className="mb-4 text-xs font-bold uppercase tracking-widest sm:mb-6">Контакт</h5>
             <p className="mb-2 text-sm">info@uzkkstudent.rs</p>
             <p className="text-sm">+381 64 / 2-4444-87</p>
           </div>
