@@ -17,9 +17,9 @@ function KontaktPage() {
     <>
       <PageHeader eyebrow="Контакт" title="ПИШИТЕ НАМ, ДОЂИТЕ НА ТРЕНИНГ." />
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2">
-          <div className="space-y-8">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-10 sm:gap-12 md:grid-cols-2">
+          <div className="space-y-6 sm:space-y-8">
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Адреса</span>
               <p className="mt-2 text-xl font-bold">Спортски центар Чаир</p>
