@@ -27,7 +27,7 @@ function KontaktPage() {
             </div>
             <div>
               <span className="font-mono text-[10px] uppercase tracking-widest text-primary">Телефон</span>
-              <p className="mt-2 text-xl font-bold">
+              <p className="mt-2 text-lg font-bold sm:text-xl">
                 <a href="tel:+381642444487" className="hover:text-primary">
                   +381 64 / 2-4444-87
                 </a>
