@@ -76,16 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "УЖКК Студент Ниш — Женски кошаркашки клуб" },
       { name: "description", content: "Званични сајт УЖКК Студент Ниш. Вести, тим, млађе категорије, галерија и контакт." },
-      { name: "author", content: "Lovable" },
+      { name: "author", content: "УЖКК Студент Ниш" },
       { property: "og:title", content: "УЖКК Студент Ниш — Женски кошаркашки клуб" },
       { property: "og:description", content: "Званични сајт УЖКК Студент Ниш. Вести, тим, млађе категорије, галерија и контакт." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "УЖКК Студент Ниш — Женски кошаркашки клуб" },
       { name: "twitter:description", content: "Званични сајт УЖКК Студент Ниш. Вести, тим, млађе категорије, галерија и контакт." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/073de812-407f-4d35-aecd-1adae3c41649/id-preview-168345c4--5e00f288-9e7f-47be-8591-4f11eb74e2df.lovable.app-1782228181052.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/073de812-407f-4d35-aecd-1adae3c41649/id-preview-168345c4--5e00f288-9e7f-47be-8591-4f11eb74e2df.lovable.app-1782228181052.png" },
     ],
     links: [
       {

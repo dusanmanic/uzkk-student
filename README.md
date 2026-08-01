@@ -1,26 +1,24 @@
-# Nova UZKK Web
+# УЖКК Студент Ниш
 
-Imam ovaj sajt https://www.uzkkstudent.rs/ ali zeim da napravim novi i lepsi i prostiji
+Званични сајт УЖКК Студент Ниш — вести, тим, млађе категорије, галерија и контакт.
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://student-sparkle-space.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5e00f288-9e7f-47be-8591-4f11eb74e2df).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Стек: TanStack Start, React, Vite, Tailwind CSS, Cloudflare Workers.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Potreban je **Node.js 22+**.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
+```
+
+App radi na [http://localhost:3000](http://localhost:3000).
+
+## Build & deploy
+
+```sh
+npm run build
+npm run preview   # lokalni preview Cloudflare build-a
+npm run deploy    # deploy na Cloudflare Workers
 ```
