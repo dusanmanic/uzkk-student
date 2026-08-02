@@ -26,15 +26,19 @@ function KlubPage() {
           ))}
         </div>
 
-        <h2 className="mt-14 mb-6 text-2xl font-extrabold tracking-tighter sm:mt-20 sm:mb-8 sm:text-3xl">Кључни моменти</h2>
-        <ol className="space-y-px bg-border">
-          {data.milestones.map((m) => (
-            <li key={m.year} className="grid gap-2 bg-background p-5 sm:gap-4 sm:p-6 md:grid-cols-[140px_1fr] md:items-baseline">
-              <span className="font-mono text-xl font-extrabold text-primary sm:text-2xl">{m.year}</span>
-              <p className="text-pretty">{m.text}</p>
-            </li>
-          ))}
-        </ol>
+        {data.milestones.length > 0 ? (
+          <>
+            <h2 className="mt-14 mb-6 text-2xl font-extrabold tracking-tighter sm:mt-20 sm:mb-8 sm:text-3xl">Кључни моменти</h2>
+            <ol className="space-y-px bg-border">
+              {data.milestones.map((m) => (
+                <li key={m.year} className="grid gap-2 bg-background p-5 sm:gap-4 sm:p-6 md:grid-cols-[140px_1fr] md:items-baseline">
+                  <span className="font-mono text-xl font-extrabold text-primary sm:text-2xl">{m.year}</span>
+                  <p className="text-pretty">{m.text}</p>
+                </li>
+              ))}
+            </ol>
+          </>
+        ) : null}
       </section>
     </>
   );
