@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,6 +12,8 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { getSiteContent } from "@/lib/content/functions";
+import type { SiteContent } from "@/lib/content/types";
 
 function NotFoundComponent() {
   return (
@@ -70,6 +73,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: () => getSiteContent() as Promise<SiteContent>,
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -113,15 +117,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const site = Route.useLoaderData();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <Header />
+        {isAdmin ? null : <Header crestUrl={site.crestUrl} />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <Footer />
+        {isAdmin ? null : <Footer site={site} />}
       </div>
     </QueryClientProvider>
   );

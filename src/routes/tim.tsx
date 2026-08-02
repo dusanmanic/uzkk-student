@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
-import { players, staff } from "@/data/team";
+import { getContent } from "@/lib/content/functions";
+import type { TimContent } from "@/lib/content/types";
 
 export const Route = createFileRoute("/tim")({
+  loader: () => getContent({ data: { key: "tim" } }) as Promise<TimContent>,
   head: () => ({
     meta: [
       { title: "Тим — УЖКК Студент Ниш" },
@@ -13,16 +15,17 @@ export const Route = createFileRoute("/tim")({
 });
 
 function TimPage() {
+  const data = Route.useLoaderData();
   const currentYear = new Date().getFullYear();
   return (
     <>
-      <PageHeader eyebrow="Сезона 2025/26" title="ПРВИ ТИМ И СТРУЧНИ ШТАБ" lead="Упознајте играчице које бране боје Студента и стручни штаб иза њих." />
+      <PageHeader eyebrow={data.seasonLabel} title={data.title} lead={data.lead} />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Играчице</h2>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {players.map((p) => (
-            <div key={p.num} className="group bg-background p-6">
+          {data.players.map((p) => (
+            <div key={p.id} className="group bg-background p-6">
               <img
                 src={p.img}
                 alt={p.name}
@@ -59,8 +62,8 @@ function TimPage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
           <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Стручни штаб</h2>
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-            {staff.map((s) => (
-              <div key={s.name} className="bg-background p-5 sm:p-6">
+            {data.staff.map((s) => (
+              <div key={s.id} className="bg-background p-5 sm:p-6">
                 <div className="flex gap-4 sm:gap-6">
                   <img
                     src={s.img}

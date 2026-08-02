@@ -1,9 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { news } from "@/data/news";
+import { getNewsBySlug } from "@/lib/news/functions";
 
 export const Route = createFileRoute("/vesti/$slug")({
-  loader: ({ params }) => {
-    const item = news.find((n) => n.slug === params.slug);
+  loader: async ({ params }) => {
+    const item = await getNewsBySlug({ data: { slug: params.slug } });
     if (!item) throw notFound();
     return item;
   },

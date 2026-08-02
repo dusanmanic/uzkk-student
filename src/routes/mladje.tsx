@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
-import { youthCoaches } from "@/data/team";
-import youthGroup from "@/assets/youth-group.jpg";
+import { getContent } from "@/lib/content/functions";
+import type { MladjeContent } from "@/lib/content/types";
 
 export const Route = createFileRoute("/mladje")({
+  loader: () => getContent({ data: { key: "mladje" } }) as Promise<MladjeContent>,
   head: () => ({
     meta: [
       { title: "Млађе категорије — УЖКК Студент Ниш" },
@@ -13,33 +14,23 @@ export const Route = createFileRoute("/mladje")({
   component: MladjePage,
 });
 
-const selections = [
-  { name: "Пионирке", age: "9–13 година", img: youthGroup },
-  { name: "Кадеткиње", age: "14–16 година", img: youthGroup },
-];
-
 function MladjePage() {
+  const data = Route.useLoaderData();
   return (
     <>
-      <PageHeader
-        eyebrow="Млађе категорије"
-        title="ШКОЛА КОШАРКЕ ЗА ДЕВОЈЧИЦЕ."
-        lead="Радимо са више од 100 девојчица у свим узрасним категоријама. Упис је отворен током целе године."
-      />
+      <PageHeader eyebrow={data.eyebrow} title={data.title} lead={data.lead} />
 
       <section className="border-b border-border bg-accent text-accent-foreground">
         <div className="mx-auto grid max-w-7xl items-start gap-5 px-4 py-10 sm:gap-6 sm:px-6 sm:py-12 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <h2 className="text-2xl font-extrabold tracking-tighter sm:text-3xl">Упис је отворен — 7–14 година.</h2>
-            <p className="mt-2 text-sm">
-              СЦ Чаир, Ниш. Пишите на info@uzkkstudent.rs или позовите +381 64 / 2-4444-87.
-            </p>
+            <h2 className="text-2xl font-extrabold tracking-tighter sm:text-3xl">{data.enrollment.title}</h2>
+            <p className="mt-2 text-sm">{data.enrollment.text}</p>
           </div>
           <a
-            href="mailto:info@uzkkstudent.rs"
+            href={`mailto:${data.enrollment.ctaMailto}`}
             className="inline-block bg-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-background transition-all hover:bg-primary sm:px-7 sm:py-4 sm:text-xs"
           >
-            Пријави се →
+            {data.enrollment.ctaLabel}
           </a>
         </div>
       </section>
@@ -47,8 +38,8 @@ function MladjePage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Тренери</h2>
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-          {youthCoaches.map((s) => (
-            <div key={s.role} className="bg-background p-5 outline outline-1 outline-border sm:p-6">
+          {data.coaches.map((s) => (
+            <div key={s.id} className="bg-background p-5 outline outline-1 outline-border sm:p-6">
               <div className="flex gap-4 sm:gap-6">
                 <img
                   src={s.img}
@@ -73,8 +64,8 @@ function MladjePage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
           <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Селекције</h2>
           <div className="grid gap-px bg-border md:grid-cols-2">
-            {selections.map((sel) => (
-              <div key={sel.name} className="bg-background p-5 sm:p-6">
+            {data.selections.map((sel) => (
+              <div key={sel.id} className="bg-background p-5 sm:p-6">
                 <img
                   src={sel.img}
                   alt={`Селекција ${sel.name}`}

@@ -1,15 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
-import news1 from "@/assets/news-1.jpg";
-import news2 from "@/assets/news-2.jpg";
-import news3 from "@/assets/news-3.jpg";
-import hero from "@/assets/hero-player.jpg";
-import youthGroup from "@/assets/youth-group.jpg";
-import p1 from "@/assets/player-1.jpg";
-import p2 from "@/assets/player-2.jpg";
-import p3 from "@/assets/player-3.jpg";
+import { getContent } from "@/lib/content/functions";
+import type { GalerijaContent } from "@/lib/content/types";
 
 export const Route = createFileRoute("/galerija")({
+  loader: () => getContent({ data: { key: "galerija" } }) as Promise<GalerijaContent>,
   head: () => ({
     meta: [
       { title: "Галерија — УЖКК Студент Ниш" },
@@ -19,31 +14,22 @@ export const Route = createFileRoute("/galerija")({
   component: GalerijaPage,
 });
 
-const albums = [
-  { title: "Сезона 2025/26", date: "Април 2026.", photos: [news1, hero, news2, p1, p2, news3] },
-  { title: "Школа кошарке", date: "Март 2026.", photos: [youthGroup, news3, p3, news2] },
-];
-
-const videos = [
-  { id: "dQw4w9WgXcQ", title: "Студент — најбољи моменти сезоне" },
-  { id: "M7lc1UVf-VE", title: "Тренинг младих селекција" },
-];
-
 function GalerijaPage() {
+  const data = Route.useLoaderData();
   return (
     <>
-      <PageHeader eyebrow="Галерија" title="ФОТОГРАФИЈЕ И ВИДЕО." lead="Албуми са утакмица и тренинга, плус видео снимци са нашег YouTube канала." />
+      <PageHeader eyebrow={data.eyebrow} title={data.title} lead={data.lead} />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
-        {albums.map((album) => (
-          <div key={album.title} className="mb-12 sm:mb-16">
+        {data.albums.map((album) => (
+          <div key={album.id} className="mb-12 sm:mb-16">
             <div className="mb-5 flex items-baseline justify-between gap-3 sm:mb-6">
               <h2 className="text-xl font-extrabold tracking-tighter sm:text-2xl">{album.title}</h2>
               <span className="shrink-0 font-mono text-xs text-muted-foreground">{album.date}</span>
             </div>
             <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-4">
               {album.photos.map((src, i) => (
-                <div key={i} className="bg-background">
+                <div key={`${src}-${i}`} className="bg-background">
                   <img
                     src={src}
                     alt={`${album.title} — ${i + 1}`}
@@ -63,7 +49,7 @@ function GalerijaPage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
           <h2 className="mb-6 text-xl font-extrabold tracking-tighter sm:mb-8 sm:text-2xl">Видео — YouTube</h2>
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
-            {videos.map((v) => (
+            {data.videos.map((v) => (
               <div key={v.id}>
                 <div className="aspect-video w-full overflow-hidden bg-foreground">
                   <iframe

@@ -15,8 +15,20 @@ import { Route as KlubRouteImport } from './routes/klub'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as MladjeRouteImport } from './routes/mladje'
 import { Route as TimRouteImport } from './routes/tim'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminGalerijaRouteImport } from './routes/admin.galerija'
+import { Route as AdminKlubRouteImport } from './routes/admin.klub'
+import { Route as AdminKontaktRouteImport } from './routes/admin.kontakt'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminMladjeRouteImport } from './routes/admin.mladje'
+import { Route as AdminPocetnaRouteImport } from './routes/admin.pocetna'
+import { Route as AdminSajtRouteImport } from './routes/admin.sajt'
+import { Route as AdminTimRouteImport } from './routes/admin.tim'
 import { Route as VestiIndexRouteImport } from './routes/vesti.index'
 import { Route as VestiSlugRouteImport } from './routes/vesti.$slug'
+import { Route as AdminVestiSlugRouteImport } from './routes/admin.vesti.$slug'
+import { Route as AdminVestiNovaRouteImport } from './routes/admin.vesti.nova'
+import { Route as ApiR2SplatRouteImport } from './routes/api.r2.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,6 +60,51 @@ const TimRoute = TimRouteImport.update({
   path: '/tim',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGalerijaRoute = AdminGalerijaRouteImport.update({
+  id: '/admin/galerija',
+  path: '/admin/galerija',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminKlubRoute = AdminKlubRouteImport.update({
+  id: '/admin/klub',
+  path: '/admin/klub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminKontaktRoute = AdminKontaktRouteImport.update({
+  id: '/admin/kontakt',
+  path: '/admin/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMladjeRoute = AdminMladjeRouteImport.update({
+  id: '/admin/mladje',
+  path: '/admin/mladje',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPocetnaRoute = AdminPocetnaRouteImport.update({
+  id: '/admin/pocetna',
+  path: '/admin/pocetna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSajtRoute = AdminSajtRouteImport.update({
+  id: '/admin/sajt',
+  path: '/admin/sajt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTimRoute = AdminTimRouteImport.update({
+  id: '/admin/tim',
+  path: '/admin/tim',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VestiIndexRoute = VestiIndexRouteImport.update({
   id: '/vesti/',
   path: '/vesti/',
@@ -58,6 +115,21 @@ const VestiSlugRoute = VestiSlugRouteImport.update({
   path: '/vesti/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminVestiSlugRoute = AdminVestiSlugRouteImport.update({
+  id: '/admin/vesti/$slug',
+  path: '/admin/vesti/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminVestiNovaRoute = AdminVestiNovaRouteImport.update({
+  id: '/admin/vesti/nova',
+  path: '/admin/vesti/nova',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiR2SplatRoute = ApiR2SplatRouteImport.update({
+  id: '/api/r2/$',
+  path: '/api/r2/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +138,20 @@ export interface FileRoutesByFullPath {
   '/kontakt': typeof KontaktRoute
   '/mladje': typeof MladjeRoute
   '/tim': typeof TimRoute
+  '/admin/galerija': typeof AdminGalerijaRoute
+  '/admin/klub': typeof AdminKlubRoute
+  '/admin/kontakt': typeof AdminKontaktRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mladje': typeof AdminMladjeRoute
+  '/admin/pocetna': typeof AdminPocetnaRoute
+  '/admin/sajt': typeof AdminSajtRoute
+  '/admin/tim': typeof AdminTimRoute
   '/vesti/$slug': typeof VestiSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/vesti/': typeof VestiIndexRoute
+  '/admin/vesti/$slug': typeof AdminVestiSlugRoute
+  '/admin/vesti/nova': typeof AdminVestiNovaRoute
+  '/api/r2/$': typeof ApiR2SplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +160,20 @@ export interface FileRoutesByTo {
   '/kontakt': typeof KontaktRoute
   '/mladje': typeof MladjeRoute
   '/tim': typeof TimRoute
+  '/admin/galerija': typeof AdminGalerijaRoute
+  '/admin/klub': typeof AdminKlubRoute
+  '/admin/kontakt': typeof AdminKontaktRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mladje': typeof AdminMladjeRoute
+  '/admin/pocetna': typeof AdminPocetnaRoute
+  '/admin/sajt': typeof AdminSajtRoute
+  '/admin/tim': typeof AdminTimRoute
   '/vesti/$slug': typeof VestiSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/vesti': typeof VestiIndexRoute
+  '/admin/vesti/$slug': typeof AdminVestiSlugRoute
+  '/admin/vesti/nova': typeof AdminVestiNovaRoute
+  '/api/r2/$': typeof ApiR2SplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +183,20 @@ export interface FileRoutesById {
   '/kontakt': typeof KontaktRoute
   '/mladje': typeof MladjeRoute
   '/tim': typeof TimRoute
+  '/admin/galerija': typeof AdminGalerijaRoute
+  '/admin/klub': typeof AdminKlubRoute
+  '/admin/kontakt': typeof AdminKontaktRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/mladje': typeof AdminMladjeRoute
+  '/admin/pocetna': typeof AdminPocetnaRoute
+  '/admin/sajt': typeof AdminSajtRoute
+  '/admin/tim': typeof AdminTimRoute
   '/vesti/$slug': typeof VestiSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/vesti/': typeof VestiIndexRoute
+  '/admin/vesti/$slug': typeof AdminVestiSlugRoute
+  '/admin/vesti/nova': typeof AdminVestiNovaRoute
+  '/api/r2/$': typeof ApiR2SplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +207,20 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/mladje'
     | '/tim'
+    | '/admin/galerija'
+    | '/admin/klub'
+    | '/admin/kontakt'
+    | '/admin/login'
+    | '/admin/mladje'
+    | '/admin/pocetna'
+    | '/admin/sajt'
+    | '/admin/tim'
     | '/vesti/$slug'
+    | '/admin/'
     | '/vesti/'
+    | '/admin/vesti/$slug'
+    | '/admin/vesti/nova'
+    | '/api/r2/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,8 +229,20 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/mladje'
     | '/tim'
+    | '/admin/galerija'
+    | '/admin/klub'
+    | '/admin/kontakt'
+    | '/admin/login'
+    | '/admin/mladje'
+    | '/admin/pocetna'
+    | '/admin/sajt'
+    | '/admin/tim'
     | '/vesti/$slug'
+    | '/admin'
     | '/vesti'
+    | '/admin/vesti/$slug'
+    | '/admin/vesti/nova'
+    | '/api/r2/$'
   id:
     | '__root__'
     | '/'
@@ -119,8 +251,20 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/mladje'
     | '/tim'
+    | '/admin/galerija'
+    | '/admin/klub'
+    | '/admin/kontakt'
+    | '/admin/login'
+    | '/admin/mladje'
+    | '/admin/pocetna'
+    | '/admin/sajt'
+    | '/admin/tim'
     | '/vesti/$slug'
+    | '/admin/'
     | '/vesti/'
+    | '/admin/vesti/$slug'
+    | '/admin/vesti/nova'
+    | '/api/r2/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,8 +274,20 @@ export interface RootRouteChildren {
   KontaktRoute: typeof KontaktRoute
   MladjeRoute: typeof MladjeRoute
   TimRoute: typeof TimRoute
+  AdminGalerijaRoute: typeof AdminGalerijaRoute
+  AdminKlubRoute: typeof AdminKlubRoute
+  AdminKontaktRoute: typeof AdminKontaktRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminMladjeRoute: typeof AdminMladjeRoute
+  AdminPocetnaRoute: typeof AdminPocetnaRoute
+  AdminSajtRoute: typeof AdminSajtRoute
+  AdminTimRoute: typeof AdminTimRoute
   VestiSlugRoute: typeof VestiSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   VestiIndexRoute: typeof VestiIndexRoute
+  AdminVestiSlugRoute: typeof AdminVestiSlugRoute
+  AdminVestiNovaRoute: typeof AdminVestiNovaRoute
+  ApiR2SplatRoute: typeof ApiR2SplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -178,6 +334,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TimRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/galerija': {
+      id: '/admin/galerija'
+      path: '/admin/galerija'
+      fullPath: '/admin/galerija'
+      preLoaderRoute: typeof AdminGalerijaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/klub': {
+      id: '/admin/klub'
+      path: '/admin/klub'
+      fullPath: '/admin/klub'
+      preLoaderRoute: typeof AdminKlubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/kontakt': {
+      id: '/admin/kontakt'
+      path: '/admin/kontakt'
+      fullPath: '/admin/kontakt'
+      preLoaderRoute: typeof AdminKontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/mladje': {
+      id: '/admin/mladje'
+      path: '/admin/mladje'
+      fullPath: '/admin/mladje'
+      preLoaderRoute: typeof AdminMladjeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/pocetna': {
+      id: '/admin/pocetna'
+      path: '/admin/pocetna'
+      fullPath: '/admin/pocetna'
+      preLoaderRoute: typeof AdminPocetnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/sajt': {
+      id: '/admin/sajt'
+      path: '/admin/sajt'
+      fullPath: '/admin/sajt'
+      preLoaderRoute: typeof AdminSajtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/tim': {
+      id: '/admin/tim'
+      path: '/admin/tim'
+      fullPath: '/admin/tim'
+      preLoaderRoute: typeof AdminTimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vesti/': {
       id: '/vesti/'
       path: '/vesti'
@@ -192,6 +411,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VestiSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/vesti/$slug': {
+      id: '/admin/vesti/$slug'
+      path: '/admin/vesti/$slug'
+      fullPath: '/admin/vesti/$slug'
+      preLoaderRoute: typeof AdminVestiSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/vesti/nova': {
+      id: '/admin/vesti/nova'
+      path: '/admin/vesti/nova'
+      fullPath: '/admin/vesti/nova'
+      preLoaderRoute: typeof AdminVestiNovaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/r2/$': {
+      id: '/api/r2/$'
+      path: '/api/r2/$'
+      fullPath: '/api/r2/$'
+      preLoaderRoute: typeof ApiR2SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -202,8 +442,20 @@ const rootRouteChildren: RootRouteChildren = {
   KontaktRoute: KontaktRoute,
   MladjeRoute: MladjeRoute,
   TimRoute: TimRoute,
+  AdminGalerijaRoute: AdminGalerijaRoute,
+  AdminKlubRoute: AdminKlubRoute,
+  AdminKontaktRoute: AdminKontaktRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminMladjeRoute: AdminMladjeRoute,
+  AdminPocetnaRoute: AdminPocetnaRoute,
+  AdminSajtRoute: AdminSajtRoute,
+  AdminTimRoute: AdminTimRoute,
   VestiSlugRoute: VestiSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
   VestiIndexRoute: VestiIndexRoute,
+  AdminVestiSlugRoute: AdminVestiSlugRoute,
+  AdminVestiNovaRoute: AdminVestiNovaRoute,
+  ApiR2SplatRoute: ApiR2SplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

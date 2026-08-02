@@ -14,7 +14,6 @@ export default defineConfig({
     tailwindcss(),
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart({
-      // Keep custom SSR error wrapper in src/server.ts
       server: { entry: "server" },
     }),
     viteReact(),

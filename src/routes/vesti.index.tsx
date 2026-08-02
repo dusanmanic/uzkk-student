@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
-import { news } from "@/data/news";
+import { listNews } from "@/lib/news/functions";
 
 export const Route = createFileRoute("/vesti/")({
+  loader: () => listNews(),
   head: () => ({
     meta: [
       { title: "Вести — УЖКК Студент Ниш" },
@@ -13,6 +14,8 @@ export const Route = createFileRoute("/vesti/")({
 });
 
 function VestiPage() {
+  const news = Route.useLoaderData();
+
   return (
     <>
       <PageHeader eyebrow="Активности" title="ВЕСТИ" lead="Све што се дешава у клубу — резултати, упис, дешавања." />

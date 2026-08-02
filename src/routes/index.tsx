@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroPlayer from "@/assets/hero-player.jpg";
-import crest from "@/assets/crest.png";
-import { news } from "@/data/news";
+import { listNews } from "@/lib/news/functions";
+import { getContent, getSiteContent } from "@/lib/content/functions";
+import type { HomepageContent, SiteContent } from "@/lib/content/types";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const [homepage, site, news] = await Promise.all([
+      getContent({ data: { key: "homepage" } }) as Promise<HomepageContent>,
+      getSiteContent() as Promise<SiteContent>,
+      listNews(),
+    ]);
+    return { homepage, site, latest: news.slice(0, 3) };
+  },
   head: () => ({
     meta: [
       { title: "УЖКК Студент Ниш — Више од игре" },
@@ -23,31 +31,30 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const latest = news.slice(0, 3);
+  const { homepage, site, latest } = Route.useLoaderData();
+  const { hero, competitions, historyTeaser, schoolCta, socialCtaTitle } = homepage;
 
   return (
     <>
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:py-28">
           <div className="animate-reveal">
             <div className="mb-6 flex items-center gap-3 sm:mb-8 sm:gap-4">
-              <img src={crest} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20" />
+              <img src={site.crestUrl} alt="Грб УЖКК Студент Ниш" width={72} height={72} className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20" />
               <div className="min-w-0">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  Од 1953.
+                  {hero.foundedLabel}
                 </span>
                 <h2 className="truncate text-sm font-extrabold tracking-tighter text-primary sm:text-base">
-                  УЖКК СТУДЕНТ НИШ
+                  {hero.brand}
                 </h2>
               </div>
             </div>
             <h1 className="mb-6 text-[2.75rem] font-extrabold leading-[0.85] tracking-tighter sm:mb-8 sm:text-6xl lg:text-8xl">
-              ВИШЕ ОД <span className="text-primary">ИГРЕ.</span>
+              {hero.headlineBefore} <span className="text-primary">{hero.headlineAccent}</span>
             </h1>
             <p className="mb-6 max-w-[42ch] text-base text-pretty text-muted-foreground sm:mb-8 sm:text-lg">
-              Традиција, снага и заједништво. Женски кошаркашки клуб Студент Ниш — место где се
-              стварају шампиони већ деценијама.
+              {hero.subcopy}
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -66,60 +73,47 @@ function Index() {
           </div>
           <div className="animate-reveal relative [animation-delay:200ms]">
             <img
-              src={heroPlayer}
+              src={hero.heroImage}
               alt="Кошаркашица Студента у акцији"
               width={1024}
               height={1280}
               className="aspect-[4/5] w-full rounded-sm object-cover shadow-2xl"
             />
             <div className="absolute -bottom-6 -right-6 hidden bg-accent p-6 text-accent-foreground lg:block">
-              <span className="font-mono text-4xl font-extrabold">1953</span>
+              <span className="font-mono text-4xl font-extrabold">{hero.yearBadge}</span>
               <p className="text-[10px] font-bold uppercase tracking-tighter">Година оснивања</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Competitions */}
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
           <span className="mb-5 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground sm:mb-6">
             Такмичимо се у
           </span>
           <div className="flex flex-wrap items-center gap-6 sm:gap-12">
-            <a
-              href="https://www.kss.rs/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
-            >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground font-extrabold sm:h-14 sm:w-14">
-                КСС
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-bold">Кошаркашки савез Србије</p>
-                <p className="text-xs text-muted-foreground group-hover:text-primary">kss.rs ↗</p>
-              </div>
-            </a>
-            <a
-              href="https://www.fiba.basketball/eurocupwomen"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 transition-opacity hover:opacity-100 opacity-80"
-            >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground font-extrabold text-xs sm:h-14 sm:w-14">
-                FIBA
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-bold">FIBA EuroCup Women</p>
-                <p className="text-xs text-muted-foreground group-hover:text-primary">fiba.basketball ↗</p>
-              </div>
-            </a>
+            {competitions.map((c) => (
+              <a
+                key={c.name}
+                href={c.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 opacity-80 transition-opacity hover:opacity-100"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-primary-foreground sm:h-14 sm:w-14">
+                  {c.badge}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-sm font-bold">{c.name}</p>
+                  <p className="text-xs text-muted-foreground group-hover:text-primary">{c.urlLabel}</p>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* News */}
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
         <div className="mb-8 flex items-end justify-between gap-4 sm:mb-12">
           <div className="min-w-0">
@@ -155,21 +149,16 @@ function Index() {
         </div>
       </section>
 
-      {/* History strip */}
       <section className="border-y border-border bg-foreground text-background">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:gap-12 sm:px-6 sm:py-24 lg:grid-cols-3">
           <div>
-            <span className="font-mono text-xs uppercase text-accent">Историјат</span>
+            <span className="font-mono text-xs uppercase text-accent">{historyTeaser.eyebrow}</span>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl">
-              Седамдесет година нишке кошарке.
+              {historyTeaser.title}
             </h2>
           </div>
           <div className="space-y-5 text-neutral-300 sm:space-y-6 lg:col-span-2">
-            <p className="text-base text-pretty sm:text-lg">
-              УЖКК Студент Ниш је један од најстаријих женских кошаркашких клубова у Србији.
-              Основан 1953. године, кроз нашу школу прошле су генерације врхунских играчица.
-              Данас радимо са више од сто девојчица у свим узрасним категоријама.
-            </p>
+            <p className="text-base text-pretty sm:text-lg">{historyTeaser.body}</p>
             <Link
               to="/klub"
               className="inline-block border border-neutral-700 px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-background hover:text-foreground sm:px-6 sm:text-xs"
@@ -180,20 +169,16 @@ function Index() {
         </div>
       </section>
 
-      {/* School CTA */}
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-7xl items-center gap-6 px-4 py-12 sm:gap-8 sm:px-6 sm:py-20 md:grid-cols-2">
           <div>
-            <span className="font-mono text-xs uppercase text-primary">Упис је отворен</span>
+            <span className="font-mono text-xs uppercase text-primary">{schoolCta.eyebrow}</span>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tighter sm:text-4xl lg:text-5xl">
-              Школа кошарке за девојчице 7–14 година.
+              {schoolCta.title}
             </h2>
           </div>
           <div className="space-y-4">
-            <p className="text-muted-foreground">
-              Тренинзи у Спортском центру Чаир, под стручним вођством наших тренера млађих
-              категорија. Постаните део наше породице.
-            </p>
+            <p className="text-muted-foreground">{schoolCta.body}</p>
             <Link
               to="/mladje"
               className="inline-block bg-accent px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-accent-foreground transition-all hover:bg-foreground hover:text-background sm:px-7 sm:py-4 sm:text-xs"
@@ -204,13 +189,12 @@ function Index() {
         </div>
       </section>
 
-      {/* Social */}
       <section className="border-b border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 px-4 py-10 sm:gap-6 sm:px-6 sm:py-12 md:flex-row md:items-center">
-          <span className="text-xl font-extrabold tracking-tighter sm:text-2xl">Пратите нас уживо</span>
+          <span className="text-xl font-extrabold tracking-tighter sm:text-2xl">{socialCtaTitle}</span>
           <div className="flex flex-wrap gap-3 sm:gap-4">
             <a
-              href="https://www.instagram.com/"
+              href={site.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
@@ -218,7 +202,7 @@ function Index() {
               Инстаграм ↗
             </a>
             <a
-              href="https://www.youtube.com/"
+              href={site.youtubeUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
