@@ -1,5 +1,5 @@
 import type { NewsIndexEntry, NewsItem, NewsWriteInput } from "./types";
-import { bodyFromText, coverPublicPath } from "./types";
+import { bodyFromText, coverPublicPath, formatNewsDateTime } from "./types";
 
 export type NewsStorage = {
   list(): Promise<NewsItem[]>;
@@ -12,6 +12,7 @@ export function toIndexEntry(item: NewsItem): NewsIndexEntry {
   return {
     slug: item.slug,
     date: item.date,
+    publishedAt: item.publishedAt,
     title: item.title,
     excerpt: item.excerpt,
     img: item.img,
@@ -22,10 +23,12 @@ export function buildNewsItem(
   input: NewsWriteInput,
   img: string,
 ): NewsItem {
+  const publishedAt = input.publishedAt || new Date().toISOString();
   return {
     slug: input.slug,
-    date: input.date,
-    title: input.title,
+    publishedAt,
+    date: formatNewsDateTime(publishedAt),
+    title: input.title.toLocaleUpperCase("sr-RS"),
     excerpt: input.excerpt,
     body: bodyFromText(input.bodyText),
     img,

@@ -1,6 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { bodyToText, slugify, type NewsItem } from "@/lib/news/types";
+import {
+  bodyToText,
+  fromDatetimeLocalValue,
+  nowIso,
+  slugify,
+  toDatetimeLocalValue,
+  type NewsItem,
+} from "@/lib/news/types";
 import { saveNewsClient } from "@/lib/news/functions";
 
 type Props = {
@@ -25,7 +32,10 @@ export function NewsEditorForm({ mode, initial }: Props) {
   const [title, setTitle] = useState(initial?.title ?? "");
   const [slug, setSlug] = useState(initial?.slug ?? "");
   const [slugTouched, setSlugTouched] = useState(mode === "edit");
-  const [date, setDate] = useState(initial?.date ?? "");
+  const missingPublishedAt = mode === "edit" && !initial?.publishedAt;
+  const [publishedLocal, setPublishedLocal] = useState(() =>
+    toDatetimeLocalValue(initial?.publishedAt || nowIso()),
+  );
   const [excerpt, setExcerpt] = useState(initial?.excerpt ?? "");
   const [bodyText, setBodyText] = useState(initial ? bodyToText(initial.body) : "");
   const [coverFile, setCoverFile] = useState<File | null>(null);
@@ -58,8 +68,8 @@ export function NewsEditorForm({ mode, initial }: Props) {
       const cover = coverFile ? await fileToCover(coverFile) : null;
       const item = await saveNewsClient({
           slug: slugify(slug || title),
-          date,
-          title,
+          publishedAt: fromDatetimeLocalValue(publishedLocal),
+          title: title.toLocaleUpperCase("sr-RS"),
           excerpt,
           bodyText,
           cover,
@@ -82,33 +92,49 @@ export function NewsEditorForm({ mode, initial }: Props) {
           <input
             required
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="w-full border border-border bg-background px-3 py-3 text-base outline-none focus:border-primary"
+            onChange={(e) => setTitle(e.target.value.toLocaleUpperCase("sr-RS"))}
+            className="w-full border border-border bg-background px-3 py-3 text-base uppercase outline-none focus:border-primary"
           />
         </label>
 
         <label className="block space-y-2">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Slug (URL)</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            Slug (URL) — попуњава се аутоматски из наслова
+          </span>
           <input
             required
             value={slug}
             onChange={(e) => {
               setSlugTouched(true);
-              setSlug(e.target.value);
+              setSlug(slugify(e.target.value));
             }}
+            onBlur={() => {
+              if (!slug.trim()) {
+                setSlugTouched(false);
+                setSlug(slugify(title));
+              }
+            }}
+            placeholder="npr. nova-titula-za-zvezdu"
             className="w-full border border-border bg-background px-3 py-3 font-mono text-sm outline-none focus:border-primary"
           />
         </label>
 
         <label className="block space-y-2">
-          <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Датум</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            Датум и време објаве
+          </span>
           <input
             required
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            placeholder="нпр. 22. АПРИЛ 2026."
+            type="datetime-local"
+            value={publishedLocal}
+            onChange={(e) => setPublishedLocal(e.target.value)}
             className="w-full border border-border bg-background px-3 py-3 text-base outline-none focus:border-primary"
           />
+          {missingPublishedAt ? (
+            <span className="block text-xs text-muted-foreground">
+              Стара вест нема тачан датум/време — изаберите га овде, па сачувајте.
+            </span>
+          ) : null}
         </label>
 
         <label className="block space-y-2 md:col-span-2">

@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/site/PageHeader";
+import { GalleryLightbox } from "@/components/site/GalleryLightbox";
 import { getContent } from "@/lib/content/functions";
 import type { GalerijaContent } from "@/lib/content/types";
 
@@ -14,6 +16,50 @@ export const Route = createFileRoute("/galerija")({
   component: GalerijaPage,
 });
 
+function AlbumGrid({
+  title,
+  photos,
+}: {
+  title: string;
+  photos: string[];
+}) {
+  const [active, setActive] = useState<number | null>(null);
+
+  return (
+    <>
+      <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-4">
+        {photos.map((src, i) => (
+          <button
+            key={`${src}-${i}`}
+            type="button"
+            onClick={() => setActive(i)}
+            className="group cursor-pointer bg-background text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            aria-label={`Отвори фотографију ${i + 1} — ${title}`}
+          >
+            <img
+              src={src}
+              alt={`${title} — ${i + 1}`}
+              width={512}
+              height={512}
+              loading="lazy"
+              className="aspect-square w-full object-cover transition-opacity group-hover:opacity-80"
+            />
+          </button>
+        ))}
+      </div>
+      {active !== null ? (
+        <GalleryLightbox
+          photos={photos}
+          index={active}
+          altPrefix={title}
+          onClose={() => setActive(null)}
+          onIndexChange={setActive}
+        />
+      ) : null}
+    </>
+  );
+}
+
 function GalerijaPage() {
   const data = Route.useLoaderData();
   return (
@@ -27,20 +73,7 @@ function GalerijaPage() {
               <h2 className="text-xl font-extrabold tracking-tighter sm:text-2xl">{album.title}</h2>
               <span className="shrink-0 font-mono text-xs text-muted-foreground">{album.date}</span>
             </div>
-            <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-4">
-              {album.photos.map((src, i) => (
-                <div key={`${src}-${i}`} className="bg-background">
-                  <img
-                    src={src}
-                    alt={`${album.title} — ${i + 1}`}
-                    width={512}
-                    height={512}
-                    loading="lazy"
-                    className="aspect-square w-full object-cover transition-opacity hover:opacity-80"
-                  />
-                </div>
-              ))}
-            </div>
+            <AlbumGrid title={album.title} photos={album.photos} />
           </div>
         ))}
       </section>

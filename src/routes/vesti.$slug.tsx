@@ -37,7 +37,7 @@ function VestPage() {
         ← Све вести
       </Link>
       <span className="mt-6 block font-mono text-xs text-muted-foreground sm:mt-8">{item.date}</span>
-      <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tighter sm:text-4xl lg:text-6xl">
+      <h1 className="mt-3 text-3xl font-extrabold uppercase leading-tight tracking-tighter sm:text-4xl lg:text-6xl">
         {item.title}
       </h1>
       <img

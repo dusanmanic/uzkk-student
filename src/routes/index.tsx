@@ -114,38 +114,43 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
-        <div className="mb-8 flex items-end justify-between gap-4 sm:mb-12">
-          <div className="min-w-0">
-            <span className="mb-2 block font-mono text-xs uppercase text-primary">Активности</span>
-            <h2 className="text-2xl font-extrabold tracking-tighter sm:text-4xl">НАЈНОВИЈЕ ВЕСТИ</h2>
-          </div>
-          <Link to="/vesti" className="shrink-0 border-b-2 border-accent pb-1 text-xs font-bold uppercase sm:text-sm">
-            Све вести
-          </Link>
-        </div>
-        <div className="grid gap-px bg-border md:grid-cols-3">
-          {latest.map((n) => (
+      <section className="bg-accent text-accent-foreground">
+        <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24">
+          <div className="mb-8 flex items-end justify-between gap-4 sm:mb-12">
+            <div className="min-w-0">
+              <span className="mb-2 block font-mono text-xs uppercase opacity-80">Активности</span>
+              <h2 className="text-2xl font-extrabold tracking-tighter sm:text-4xl">НАЈНОВИЈЕ ВЕСТИ</h2>
+            </div>
             <Link
-              key={n.slug}
-              to="/vesti/$slug"
-              params={{ slug: n.slug }}
-              className="group bg-background p-5 sm:p-8"
+              to="/vesti"
+              className="shrink-0 border-b-2 border-primary pb-1 text-xs font-bold uppercase sm:text-sm"
             >
-              <img
-                src={n.img}
-                alt={n.title}
-                width={1024}
-                height={640}
-                loading="lazy"
-                className="mb-5 aspect-video w-full object-cover sm:mb-6"
-              />
-              <span className="font-mono text-[10px] text-muted-foreground">{n.date}</span>
-              <h3 className="mt-2 text-xl font-bold italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
-                {n.title}
-              </h3>
+              Све вести
             </Link>
-          ))}
+          </div>
+          <div className="grid gap-px bg-primary/15 md:grid-cols-3">
+            {latest.map((n) => (
+              <Link
+                key={n.slug}
+                to="/vesti/$slug"
+                params={{ slug: n.slug }}
+                className="group bg-accent p-5 sm:p-8"
+              >
+                <img
+                  src={n.img}
+                  alt={n.title}
+                  width={1024}
+                  height={640}
+                  loading="lazy"
+                  className="mb-5 aspect-video w-full object-cover sm:mb-6"
+                />
+                <span className="font-mono text-[10px] opacity-75">{n.date}</span>
+                <h3 className="mt-2 text-xl font-bold uppercase italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
+                  {n.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

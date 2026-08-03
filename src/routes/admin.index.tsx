@@ -60,7 +60,7 @@ function AdminIndexPage() {
                 />
                 <div className="min-w-0">
                   <p className="font-mono text-[10px] text-muted-foreground">{item.date}</p>
-                  <h2 className="truncate text-lg font-bold">{item.title}</h2>
+                  <h2 className="truncate text-lg font-bold uppercase">{item.title}</h2>
                   <p className="mt-1 line-clamp-2 text-sm text-muted-foreground">{item.excerpt}</p>
                 </div>
               </div>

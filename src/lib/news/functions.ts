@@ -51,7 +51,7 @@ export const ensureAdmin = createServerFn({ method: "GET" }).handler(async () =>
 
 const writeSchema = z.object({
   slug: z.string().min(1).max(80),
-  date: z.string().min(1),
+  publishedAt: z.string().min(1),
   title: z.string().min(1),
   excerpt: z.string().min(1),
   bodyText: z.string().min(1),

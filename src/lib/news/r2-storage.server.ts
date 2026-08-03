@@ -4,9 +4,10 @@ import {
   decodeBase64Payload,
   extensionFromFileName,
   extensionFromType,
+  toIndexEntry,
   type NewsStorage,
 } from "./storage";
-import { coverPublicPath } from "./types";
+import { coverPublicPath, formatNewsDateTime, newsSortKey } from "./types";
 import type { R2Like } from "@/lib/content/store";
 import { deleteR2Prefix, mediaUrl, requireR2 } from "@/lib/content/store";
 
@@ -31,6 +32,21 @@ function storageKeyFromImg(img: string): string {
   return img.replace(/^\/api\/r2\//, "").replace(/^\/+/, "");
 }
 
+function hasValidPublishedAt(value: string | undefined): value is string {
+  return Boolean(value && !Number.isNaN(Date.parse(value)));
+}
+
+function normalizeItem(item: NewsItem): NewsItem {
+  if (!hasValidPublishedAt(item.publishedAt)) {
+    return { ...item, publishedAt: undefined, date: item.date };
+  }
+  return {
+    ...item,
+    publishedAt: item.publishedAt,
+    date: formatNewsDateTime(item.publishedAt),
+  };
+}
+
 async function readJson<T>(r2: R2Like, key: string): Promise<T | null> {
   const obj = await r2.get(key);
   if (!obj) return null;
@@ -52,13 +68,14 @@ export function createR2NewsStorage(r2Input: R2Like | null): NewsStorage {
       const items = await Promise.all(index.map((entry) => readJson<NewsItem>(r2, vestKey(entry.slug))));
       return items
         .filter((item): item is NewsItem => Boolean(item))
-        .map((item) => ({ ...item, img: toApiImg(item.img) }));
+        .map((item) => ({ ...normalizeItem(item), img: toApiImg(item.img) }))
+        .sort((a, b) => newsSortKey(b) - newsSortKey(a));
     },
 
     async get(slug) {
       const item = await readJson<NewsItem>(r2, vestKey(slug));
       if (!item) return null;
-      return { ...item, img: toApiImg(item.img) };
+      return { ...normalizeItem(item), img: toApiImg(item.img) };
     },
 
     async save(input, previousSlug) {
@@ -77,7 +94,6 @@ export function createR2NewsStorage(r2Input: R2Like | null): NewsStorage {
         imgPath = `vesti-media/${input.slug}/cover.${ext}`;
         const bytes = decodeBase64Payload(input.cover.contentBase64);
 
-        // Remove previous covers for this slug, then write the new one
         await deleteR2Prefix(r2, mediaPrefix(input.slug));
         for (const e of ["jpg", "jpeg", "png", "webp"]) {
           await r2.delete(`vesti-media/${input.slug}/cover.${e}`).catch(() => undefined);
@@ -117,24 +133,17 @@ export function createR2NewsStorage(r2Input: R2Like | null): NewsStorage {
       const next = index.filter(
         (entry) => entry.slug !== input.slug && entry.slug !== previousSlug,
       );
-      next.unshift({
-        slug: stored.slug,
-        date: stored.date,
-        title: stored.title,
-        excerpt: stored.excerpt,
-        img: stored.img,
-      });
+      next.unshift(toIndexEntry(stored));
+      next.sort((a, b) => newsSortKey(b) - newsSortKey(a));
       await writeJson(r2, indexKey(), next);
 
       return { ...stored, img: toApiImg(stored.img) };
     },
 
     async remove(slug) {
-      // JSON + any files under content/vesti/{slug}/
       await deleteR2Prefix(r2, `content/vesti/${slug}/`);
       await r2.delete(vestKey(slug)).catch(() => undefined);
 
-      // Cover and any other media for this vest
       await deleteR2Prefix(r2, mediaPrefix(slug));
       for (const ext of ["jpg", "jpeg", "png", "webp", "gif"]) {
         await r2.delete(`vesti-media/${slug}/cover.${ext}`).catch(() => undefined);
