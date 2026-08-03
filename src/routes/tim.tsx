@@ -17,6 +17,12 @@ export const Route = createFileRoute("/tim")({
 function TimPage() {
   const data = Route.useLoaderData();
   const currentYear = new Date().getFullYear();
+  const players = [...data.players].sort((a, b) => {
+    const na = Number.parseInt(a.num, 10);
+    const nb = Number.parseInt(b.num, 10);
+    if (Number.isFinite(na) && Number.isFinite(nb) && na !== nb) return na - nb;
+    return a.num.localeCompare(b.num, "sr");
+  });
   return (
     <>
       <PageHeader eyebrow={data.seasonLabel} title={data.title} lead={data.lead} />
@@ -24,7 +30,7 @@ function TimPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
         <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Играчице</h2>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {data.players.map((p) => (
+          {players.map((p) => (
             <div key={p.id} className="group bg-background p-6">
               <img
                 src={p.img}
