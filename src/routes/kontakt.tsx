@@ -77,11 +77,11 @@ function KontaktPage() {
             <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6">
               <img src={site.crestUrl} alt="Грб УЖКК Студент Ниш" width={120} height={120} className="h-20 w-20 sm:h-28 sm:w-28" />
               <a
-                href={site.crestUrl}
-                download="uzkk-student-grb.svg"
+                href="/uzkk-student-grb.zip"
+                download="uzkk-student-grb.zip"
                 className="inline-block bg-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest text-background transition-all hover:bg-primary sm:px-6 sm:text-xs"
               >
-                Преузми грб (PNG) ↓
+                Преузми грб ↓
               </a>
             </div>
           </div>
