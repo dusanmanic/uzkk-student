@@ -60,12 +60,12 @@ function KontaktPage() {
                 Инстаграм ↗
               </a>
               <a
-                href={site.youtubeUrl}
+                href={site.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-foreground px-5 py-3 text-xs font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background"
               >
-                YouTube ↗
+                Facebook ↗
               </a>
             </div>
           </div>

@@ -33,8 +33,8 @@ export function Footer({ site }: { site: SiteContent }) {
               <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
                 Инстаграм
               </a>
-              <a href={site.youtubeUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
-                YouTube
+              <a href={site.facebookUrl} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
+                Facebook
               </a>
             </div>
           </div>

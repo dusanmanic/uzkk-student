@@ -92,18 +92,30 @@ function Index() {
           <span className="mb-5 block font-mono text-[10px] uppercase tracking-widest text-muted-foreground sm:mb-6">
             Такмичимо се у
           </span>
-          <div className="flex flex-wrap items-center gap-6 sm:gap-12">
+          <div className="flex flex-wrap items-center gap-8 sm:gap-12">
             {competitions.map((c) => (
               <a
                 key={c.name}
                 href={c.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 opacity-80 transition-opacity hover:opacity-100"
+                className="group flex items-center gap-3 opacity-90 transition-opacity hover:opacity-100"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-primary-foreground sm:h-14 sm:w-14">
-                  {c.badge}
-                </div>
+                {c.logoUrl ? (
+                  <img
+                    src={c.logoUrl}
+                    alt={c.name}
+                    className={
+                      c.badge === "КСС"
+                        ? "h-8 w-8 shrink-0 rounded-full object-cover sm:h-9 sm:w-9"
+                        : "h-10 w-auto max-w-[160px] shrink-0 object-contain sm:h-12 sm:max-w-[200px]"
+                    }
+                  />
+                ) : (
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-primary-foreground sm:h-14 sm:w-14">
+                    {c.badge}
+                  </div>
+                )}
                 <div className="min-w-0">
                   <p className="text-sm font-bold">{c.name}</p>
                   <p className="text-xs text-muted-foreground group-hover:text-primary">{c.urlLabel}</p>
@@ -207,12 +219,12 @@ function Index() {
               Инстаграм ↗
             </a>
             <a
-              href={site.youtubeUrl}
+              href={site.facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="border border-foreground px-5 py-3 text-[11px] font-bold uppercase tracking-widest transition-all hover:bg-foreground hover:text-background sm:px-6 sm:text-xs"
             >
-              YouTube ↗
+              Facebook ↗
             </a>
           </div>
         </div>

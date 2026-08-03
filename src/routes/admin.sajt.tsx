@@ -46,7 +46,7 @@ function AdminSitePage() {
           <Field label="E-mail"><input className={inputClass} value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} /></Field>
           <Field label="Maps query"><input className={inputClass} value={data.mapsEmbedQuery} onChange={(e) => setData({ ...data, mapsEmbedQuery: e.target.value })} /></Field>
           <Field label="Instagram URL"><input className={inputClass} value={data.instagramUrl} onChange={(e) => setData({ ...data, instagramUrl: e.target.value })} /></Field>
-          <Field label="YouTube URL"><input className={inputClass} value={data.youtubeUrl} onChange={(e) => setData({ ...data, youtubeUrl: e.target.value })} /></Field>
+          <Field label="Facebook URL"><input className={inputClass} value={data.facebookUrl} onChange={(e) => setData({ ...data, facebookUrl: e.target.value })} /></Field>
           <Field label="Crest URL"><input className={inputClass} value={data.crestUrl} onChange={(e) => setData({ ...data, crestUrl: e.target.value })} /></Field>
         </div>
         <Field label="Футер текст">

@@ -14,11 +14,11 @@ cp .env.example .env   # ADMIN_PASSWORD=student
 npm run dev
 ```
 
-App radi na [http://localhost:3000](http://localhost:3000).
+App radi na [http://localhost:3303](http://localhost:3303).
 
 ### Admin (vesti + ceo sajt)
 
-- URL: [http://localhost:3000/admin](http://localhost:3000/admin)
+- URL: [http://localhost:3303/admin](http://localhost:3303/admin)
 - Lozinka: `ADMIN_PASSWORD` iz `.env` (podrazumevano `student`)
 - Sekcije: Вести, Тим, Галерија, Клуб, Млађе, Контакт, Почетна, Сајт/футер
 - **Storage: Cloudflare R2** (bucket `uzkk-content`)

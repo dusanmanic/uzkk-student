@@ -10,7 +10,7 @@ export type SiteContent = {
   mapsEmbedQuery: string;
   crestUrl: string;
   instagramUrl: string;
-  youtubeUrl: string;
+  facebookUrl: string;
   sponsors: string[];
 };
 
@@ -24,7 +24,7 @@ export type HomepageContent = {
     heroImage: string;
     yearBadge: string;
   };
-  competitions: { badge: string; name: string; url: string; urlLabel: string }[];
+  competitions: { badge: string; name: string; url: string; urlLabel: string; logoUrl?: string }[];
   historyTeaser: { eyebrow: string; title: string; body: string };
   schoolCta: { eyebrow: string; title: string; body: string };
   socialCtaTitle: string;
