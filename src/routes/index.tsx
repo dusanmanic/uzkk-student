@@ -145,7 +145,7 @@ function Index() {
                   className="mb-5 aspect-video w-full object-cover sm:mb-6"
                 />
                 <span className="font-mono text-[10px] opacity-75">{n.date}</span>
-                <h3 className="mt-2 text-xl font-bold uppercase italic tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
+                <h3 className="mt-2 text-xl font-bold uppercase tracking-tight transition-colors group-hover:text-primary sm:text-2xl">
                   {n.title}
                 </h3>
               </Link>

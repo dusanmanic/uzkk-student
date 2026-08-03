@@ -50,7 +50,7 @@ export function GalleryLightbox({
       <button
         type="button"
         onClick={onClose}
-        className="absolute right-4 top-4 z-10 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
+        className="absolute right-4 top-4 z-10 cursor-pointer rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
         aria-label="Затвори"
       >
         <X className="h-5 w-5" />
@@ -60,7 +60,7 @@ export function GalleryLightbox({
         <>
           <button
             type="button"
-            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:left-4"
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:left-4"
             aria-label="Претходна"
             onClick={(e) => {
               e.stopPropagation();
@@ -71,7 +71,7 @@ export function GalleryLightbox({
           </button>
           <button
             type="button"
-            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:right-4"
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 cursor-pointer rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20 sm:right-4"
             aria-label="Следећа"
             onClick={(e) => {
               e.stopPropagation();
