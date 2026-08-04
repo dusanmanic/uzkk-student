@@ -73,7 +73,7 @@ function AdminTimPage() {
 
         <section className="space-y-3">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold">Играчице</h2>
+            <h2 className="text-lg font-bold">Кошаркашице</h2>
             <button
               type="button"
               className="border border-border px-3 py-2 text-[10px] font-bold uppercase"

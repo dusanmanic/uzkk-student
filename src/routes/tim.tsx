@@ -28,7 +28,7 @@ function TimPage() {
       <PageHeader eyebrow={data.seasonLabel} title={data.title} lead={data.lead} />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16">
-        <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Играчице</h2>
+        <h2 className="mb-8 text-2xl font-extrabold tracking-tighter sm:mb-10 sm:text-3xl">Кошаркашице</h2>
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
           {players.map((p) => (
             <div key={p.id} className="group bg-background p-6">
