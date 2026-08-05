@@ -66,14 +66,16 @@ function MladjePage() {
           <div className="grid gap-px bg-border md:grid-cols-2">
             {data.selections.map((sel) => (
               <div key={sel.id} className="bg-background p-5 sm:p-6">
-                <img
-                  src={sel.img}
-                  alt={`Селекција ${sel.name}`}
-                  width={1280}
-                  height={800}
-                  loading="lazy"
-                  className="aspect-[16/10] w-full object-cover"
-                />
+                <div className="flex aspect-[16/10] w-full items-center justify-center bg-muted/40">
+                  <img
+                    src={sel.img}
+                    alt={`Селекција ${sel.name}`}
+                    width={280}
+                    height={280}
+                    loading="lazy"
+                    className="h-[55%] w-auto max-w-[45%] object-contain"
+                  />
+                </div>
                 <div className="mt-4 flex items-baseline justify-between gap-3">
                   <h3 className="text-lg font-extrabold tracking-tighter sm:text-xl">{sel.name}</h3>
                   <span className="font-mono text-xs text-muted-foreground">{sel.age}</span>
